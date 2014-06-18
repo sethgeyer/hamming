@@ -2,6 +2,16 @@ require_relative "testing_library"
 
 def hamming(strand_1, strand_2)
 
+  strand1_array = strand_1.split("")
+  strand2_array = strand_2.split("")
+
+  mutants = 0
+
+  strand1_array.each_with_index do |letter,index |
+    break if strand2_array[index] == nil
+    mutants += 1 if letter != strand2_array[index]
+    end
+  mutants
 end
 
 check("Hamming distance between identical strands",
